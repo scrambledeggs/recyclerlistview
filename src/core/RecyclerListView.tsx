@@ -233,11 +233,11 @@ export default class RecyclerListView<P extends RecyclerListViewProps, S extends
         }
     }
 
-    public scrollToIndex(index: number, animate?: boolean): void {
+    public scrollToIndex(index: number, animate?: boolean, offset: number = 0): void {
         const layoutManager = this._virtualRenderer.getLayoutManager();
         if (layoutManager) {
             const offsets = layoutManager.getOffsetForIndex(index);
-            this.scrollToOffset(offsets.x, offsets.y, animate);
+            this.scrollToOffset(offsets.x, offsets.y + offset, animate);
         } else {
             console.warn(Messages.WARN_SCROLL_TO_INDEX); //tslint:disable-line
         }
